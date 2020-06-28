@@ -1,20 +1,104 @@
+% !TeX program = xelatex 
 % !TeX spellcheck = russian_english
+\RequirePackage[OT1]{fontenc}
 \documentclass[journal]{INJOITrus}
 
-
+% Настройка шрифтов
 \usepackage{fontspec}
-\setmainfont[Ligatures=TeX]{Times New Roman} % use xelatex
 \usepackage[english,russian]{babel}
+\setmainfont[Ligatures=TeX, Renderer=ICU]{Times New Roman} % use xelatex
+% Ссылки
 \usepackage{hyperref}
 \usepackage{xcolor}
+% Правильные кавычки, подстраивающиеся под язык дкумента
+\usepackage{csquotes}
+% Переносы
+\usepackage{hyphenat}
 
-%% Recommended useful packages:
-% \usepackage{amsmath}
-% \usepackage{amssymb}
-% \usepackage{graphicx}
+%Поддержка математики
+\usepackage{amsthm}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%Красивые дроби
+\usepackage{xfrac}
+%Дополнительные математические окружения
+\usepackage{mathtools}
+%Окружения для набора утверждений и определений
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{corollary}{Следствие}[section]
+\newtheorem{proposition}{Утверждение}[section]
+\newtheorem{theorem*}{Теорема}
+\newtheorem{lemma*}{Лемма}
+\newtheorem{corollary*}{Следствие}
+\newtheorem{proposition*}{Утверждение}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{remark}{Замечание}[section]
+\newtheorem{example}{Пример}[section]
+\newtheorem{definition*}{Определение}
+\newtheorem{remark*}{Замечание}
+\newtheorem{example*}{Пример}
 
-%% Пример добавления нового математического оператора
-% \DeclareMathOperator*{\argmin}{arg\,min}
+% Крутой пакет для рисования
+\usepackage{tikz}
+% Работа с графикой
+\usepackage{graphicx}
+% Пусть к папке с рисунками
+\graphicspath{{images/}}
+
+%Хорошие таблицы
+\usepackage{booktabs}
+%Длинные таблицы
+\usepackage{longtable}
+%Предоставляет окружение таблицы со столбцами, которые
+%позволяют установить их фиксированную ширину в процентах
+%и переносить слова в ячейке
+\usepackage{tabu}
+
+
+% Можно указывать имя файлов без расширений
+% LaTeX будет последовательно подставлять перечисленные
+% пока файл не будет найден
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+% Библиография
+\usepackage[%
+  backend=biber, %подключение пакета biber
+  bibstyle=ieee, %подключение одного из четырех главных стилей biblatex-gost
+  citestyle=numeric-comp, %подключение стиля
+  language=auto, %указание сортировки языков
+  sorting=none, %тип сортировки в библиографии
+  defernumbers=true,
+  doi=true,
+  eprint=false,
+  isbn=false,
+  dashed=true,
+  url=true
+]{biblatex}
+\addbibresource{injoit-rus_ru.bib}
+\addbibresource{injoit-rus_en.bib}
+
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \perdatasource{injoit-rus_ru.bib}
+      \step[fieldset=keywords, fieldvalue={, RU}, append]
+    }
+    \map{
+      \perdatasource{injoit-rus_en.bib}
+      \step[fieldset=keywords, fieldvalue={, EN}, append]
+    }
+  }
+}
+
+% Настройка
+\input{config}
+
+% Команды пользователя
+\input{usercommands}
 
 %% Попробуйте настроить этот параметр, если большой рисунок вытеснил весь текст со страницы
 %% и вам это не нравится:
@@ -22,53 +106,47 @@
 
 
 \begin{document}
-\title{Страдания юного Вертера}
+\title{\Title}
 \author{%
-	И.И. Образцов, П.П. Иванов%
-	\thanks{Статья получена ?? ????? 20??.} % Например: 1 сентября 2016
-	\thanks{Иван Иванович Образцов, МГУ им. М.В.~Ломоносова, (email: username@domain.ru).}%
-	\thanks{Петр Петрович Иванов, МГУ им. М.В.~Ломоносова, (email: username@domain.ru).}%
-	%% Если вам нужно сослаться на грант, вы можете использовать следующую команду:
-	% \thanks{Исследование выполнено при финансовой поддержке ???? в рамках научного проекта ?????.}
+    \Authors
+	\thanks{Статья получена \DateOfSubmission} % Например: 1 сентября 2016
+    \AuthorsInfo
+	\thanks{\Grant}
 }
 
 \maketitle
-%% В финальной версии статьи, которая будет включена в журнал, уберите знак комментария со строки ниже и заполните ее согласно инструкциям редакции журнала 
-% \markboth{International Journal of Open Information Technologies ISSN: 2307-8162 vol. ?, no. ?, 20??} {}
+\markboth{International Journal of Open Information Technologies ISSN: 2307-8162 vol.~\Vol, no.~\Number, \Year} {}
 
-%% Используйте команду ниже, чтобы изменить номер первой страницы:
-% \setcounter{page}{42}
+\setcounter{page}{\FirstPageNumber}
 
 % Внимание! Не забудьте заполнить английскую аннотацию и заголовок в конце документа!
 \begin{abstract}
-Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением покоя, что искусство мое страдает от этого. Ни одного штриха не мог бы я сделать, а никогда не был таким большим художником, как в эти минуты.
+\Abstract
 \end{abstract}
 
 \begin{IEEEkeywords}
-словесные горы, страна гласных
+\Keywords
 \end{IEEEkeywords}
 
-\section{Введение}
-\label{sec:intro}
-Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением покоя, что искусство мое страдает от этого. Ни одного штриха не мог бы я сделать, а никогда не был таким большим художником, как в эти минуты. Когда от милой моей долины поднимается пар и полдневное солнце стоит над непроницаемой чащей темного леса и лишь редкий луч проскальзывает в его святая святых, а я лежу в высокой траве у быстрого ручья и, прильнув к земле, вижу тысячи всевозможных былинок и чувствую, как близок моему сердцу крошечный мирок, что снует между стебельками, наблюдаю эти неисчислимые, непостижимые разновидности червяков и мошек и чувствую близость всемогущего, создавшего нас по своему подобию, веяние вселюбящего, судившего нам парить в вечном блаженстве, когда взор мой туманится и все вокруг меня и небо надо мной запечатлены в моей душе, точно образ возлюбленной, --- тогда, дорогой друг, меня часто томит мысль: <<Ах! Как бы выразить, как бы вдохнуть в рисунок то, что так полно, так трепетно живет во мне, запечатлеть отражение моей души, как душа моя --- отражение предвечного бога!>>
+\Source
 
-\section{Заключение}
-\label{sec:conclusion}
-Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением покоя, что искусство мое страдает от этого. Ни одного штриха не мог бы я сделать, а никогда не был таким большим художником, как в эти минуты. Когда от милой моей долины поднимается пар и полдневное солнце стоит над непроницаемой чащей темного леса и лишь редкий луч проскальзывает в его святая святых, а я лежу в высокой траве у быстрого ручья и, прильнув к земле, вижу тысячи всевозможных былинок и чувствую, как близок моему сердцу крошечный мирок, что снует между стебельками, наблюдаю эти неисчислимые, непостижимые разновидности червяков и мошек и чувствую близость всемогущего, создавшего нас по своему подобию, веяние вселюбящего, судившего нам парить в вечном блаженстве, когда взор мой туманится и все вокруг меня и небо надо мной запечатлены в моей душе, точно образ возлюбленной, --- тогда, дорогой друг, меня часто томит мысль: <<Ах! Как бы выразить, как бы вдохнуть в рисунок то, что так полно, так трепетно живет во мне, запечатлеть отражение моей души, как душа моя --- отражение предвечного бога!>> \cite{goethe}
-
-\bibliographystyle{gost2008}
-\input{gost_legacy.tex}
-\bibliography{refs}
+% \bibliographystyle{gost2008}
+% \input{gost_legacy.tex}
+% \bibliography{refs}
+\nocite{*}
+\printbibliography[keyword=RU, title=Библиография]
 
 % Заглавие, аннотация и ключевые слова на английском языке.
 
-\title{Lorem ipsum}
-\author{John Doe, James Smith}
+\title{\TitleEN}
+\author{\AuthorsEN}
 \maketitleeng
 \begin{abstract}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
+\AbstractEN
 \end{abstract}
 \begin{IEEEkeywords}
-keywords
+\KeywordsEN
 \end{IEEEkeywords}
+\nocite{*}
+\printbibliography[keyword=EN, title=References, resetnumbers=true]
 \end{document}

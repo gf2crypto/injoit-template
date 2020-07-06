@@ -1,6 +1,6 @@
 @ECHO OFF
 
-set TEX_SOURCE="injoit-rus.tex"
+set TEX_SOURCE="{{cookiecutter.project_name}}.tex"
 
 set BUILDPARAM=-cd -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
 set WATCHPARAM=-pvc -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape

@@ -1,3 +1,4 @@
+{%- raw -%}
 % !TeX program = xelatex 
 % !TeX spellcheck = russian_english
 \RequirePackage[OT1]{fontenc}
@@ -78,17 +79,25 @@
   dashed=true,
   url=true
 ]{biblatex}
-\addbibresource{injoit-rus_ru.bib}
-\addbibresource{injoit-rus_en.bib}
+\addbibresource{
+{%- endraw -%}
+{{cookiecutter.project_name}}_ru.bib
+{%- raw -%}
+}
+\addbibresource{
+{%- endraw -%}
+ {{cookiecutter.project_name}}_en.bib
+{%- raw -%}
+}
 
 \DeclareSourcemap{
   \maps[datatype=bibtex]{
     \map{
-      \perdatasource{injoit-rus_ru.bib}
+      \perdatasource{{{cookiecutter.project_name}}_ru.bib}
       \step[fieldset=keywords, fieldvalue={, RU}, append]
     }
     \map{
-      \perdatasource{injoit-rus_en.bib}
+      \perdatasource{{{cookiecutter.project_name}}_en.bib}
       \step[fieldset=keywords, fieldvalue={, EN}, append]
     }
   }
@@ -150,3 +159,4 @@
 \nocite{*}
 \printbibliography[keyword=EN, title=References, resetnumbers=true]
 \end{document}
+{% endraw %}

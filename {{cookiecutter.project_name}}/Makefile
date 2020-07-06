@@ -1,4 +1,4 @@
-TEX_SOURCE := injoit-rus
+TEX_SOURCE := {{cookiecutter.project_name}}
 
 BUILDPARAM = -cd -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
 WATCHPARAM = -pvc -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape

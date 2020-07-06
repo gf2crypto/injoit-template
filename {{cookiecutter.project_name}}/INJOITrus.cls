@@ -1,3 +1,4 @@
+{%- raw -%}
 %% INJOIT template by Mikhail Erofeev based on IEEEtran LaTeX class.
 %% Copyright (c) 2016 by Mikhail Erofeev
 %%
@@ -6423,4 +6424,4 @@ Use \@IEEEbackslash #2 instead.}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% End of IEEEtran.cls  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % That's all folks!
-
+{% endraw %}

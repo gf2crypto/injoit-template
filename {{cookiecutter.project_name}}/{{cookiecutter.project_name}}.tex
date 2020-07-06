@@ -93,11 +93,19 @@
 \DeclareSourcemap{
   \maps[datatype=bibtex]{
     \map{
-      \perdatasource{{{cookiecutter.project_name}}_ru.bib}
+      \perdatasource{
+{%- endraw -%}
+{{cookiecutter.project_name}}_ru.bib
+{%- raw -%}
+}
       \step[fieldset=keywords, fieldvalue={, RU}, append]
     }
     \map{
-      \perdatasource{{{cookiecutter.project_name}}_en.bib}
+      \perdatasource{
+{%- endraw -%}
+      {{cookiecutter.project_name}}_en.bib
+{%- raw -%}
+}
       \step[fieldset=keywords, fieldvalue={, EN}, append]
     }
   }

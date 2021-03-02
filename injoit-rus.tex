@@ -65,34 +65,11 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 % Библиография
-\usepackage[%
-  backend=biber, %подключение пакета biber
-  bibstyle=ieee, %подключение одного из четырех главных стилей biblatex-gost
-  citestyle=numeric-comp, %подключение стиля
-  language=auto, %указание сортировки языков
-  sorting=none, %тип сортировки в библиографии
-  defernumbers=true,
-  doi=true,
-  eprint=false,
-  isbn=false,
-  dashed=true,
-  url=true
-]{biblatex}
-\addbibresource{injoit-rus_ru.bib}
-\addbibresource{injoit-rus_en.bib}
+\usepackage[resetlabels]{multibib}
 
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map{
-      \perdatasource{injoit-rus_ru.bib}
-      \step[fieldset=keywords, fieldvalue={, RU}, append]
-    }
-    \map{
-      \perdatasource{injoit-rus_en.bib}
-      \step[fieldset=keywords, fieldvalue={, EN}, append]
-    }
-  }
-}
+\newcites{eng}{References}
+\newcites{rus}{Библиография}
+\newcommand{\mycite}[1]{\cite{#1}\nociteeng{#1}}
 
 % Настройка
 \input{config}
@@ -119,7 +96,6 @@
 
 \setcounter{page}{\FirstPageNumber}
 
-% Внимание! Не забудьте заполнить английскую аннотацию и заголовок в конце документа!
 \begin{abstract}
 \Abstract
 \end{abstract}
@@ -130,11 +106,10 @@
 
 \Source
 
-% \bibliographystyle{gost2008}
-% \input{gost_legacy.tex}
-% \bibliography{refs}
-\nocite{*}
-\printbibliography[keyword=RU, title=Библиография]
+\bibliographystyle{gost2008}
+\input{gost_legacy.tex}
+\bibliography{refs}
+
 
 % Заглавие, аннотация и ключевые слова на английском языке.
 \begin{otherlanguage}{english}
@@ -148,6 +123,8 @@
 \KeywordsEN
 \end{IEEEkeywords}
 \nocite{*}
-\printbibliography[keyword=EN, title=References, resetnumbers=true]
+\bibliographystyleeng{gost2008}
+\nociteeng{*}
+\bibliographyeng{refs_en}
 \end{otherlanguage}
 \end{document}

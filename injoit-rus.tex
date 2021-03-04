@@ -1,7 +1,7 @@
 % !TeX program = xelatex 
 % !TeX spellcheck = russian_english
 \RequirePackage[OT1]{fontenc}
-\documentclass[journal]{INJOITrus}
+\documentclass[journal]{styles/INJOITrus}
 
 % Настройка шрифтов
 \usepackage{fontspec}
@@ -106,9 +106,9 @@
 
 \Source
 
-\bibliographystyle{gost2008}
-\input{gost_legacy.tex}
-\bibliography{refs}
+\bibliographystyle{styles/gost2008}
+\input{styles/gost_legacy.tex}
+\bibliography{bib/refs}
 
 
 % Заглавие, аннотация и ключевые слова на английском языке.
@@ -123,8 +123,8 @@
 \KeywordsEN
 \end{IEEEkeywords}
 \nocite{*}
-\bibliographystyleeng{gost2008}
+\bibliographystyleeng{styles/gost2008}
 \nociteeng{*}
-\bibliographyeng{refs_en}
+\bibliographyeng{bib/refs_en}
 \end{otherlanguage}
 \end{document}

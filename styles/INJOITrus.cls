@@ -205,7 +205,7 @@
 
 
 
-\ProvidesClass{INJOITrus}[2016/06/05 V1.8b+0.1 by Mikhail Erofeev]
+\ProvidesClass{styles/INJOITrus}[2016/06/05 V1.8b+0.1 by Mikhail Erofeev]
 \NeedsTeXFormat{LaTeX2e}
 
 % IEEEtran.cls version numbers, provided as of V1.3

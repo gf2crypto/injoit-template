@@ -2,7 +2,7 @@ TEX_SOURCE := injoit-rus
 
 BUILDPARAM = -cd -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
 WATCHPARAM = -pvc -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
-TEMP_FILES = *.aux *.fdb_latexmk *.fls *.log *.out *.synctex.gz *.xdv *.bbl *.bcf *.blg *.run.xml *.toc
+TEMP_FILES = *.aux *.fdb_latexmk *.fls *.log *.out *.synctex.gz *.xdv *.bbl *.bcf *.blg *.run.xml *.toc *.xdv
 
 .PHONY: build
 build:

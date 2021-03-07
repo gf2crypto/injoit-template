@@ -5,7 +5,7 @@ set TEX_SOURCE="injoit-rus.tex"
 set BUILDPARAM=-cd -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
 set WATCHPARAM=-pvc -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
 
-set TEMP_FILES=("*.aux", "*.fdb_latexmk", "*.fls", "*.log", "*.out", "*.synctex.gz", "*.xdv", "*.bbl", "*.bcf", "*.blg", "*.run.xml", "*.toc")
+set TEMP_FILES=("*.aux", "*.fdb_latexmk", "*.fls", "*.log", "*.out", "*.synctex.gz", "*.xdv", "*.bbl", "*.bcf", "*.blg", "*.run.xml", "*.toc", "*.xdv")
 
 set ACTION=%1
 
